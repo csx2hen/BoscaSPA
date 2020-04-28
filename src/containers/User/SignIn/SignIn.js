@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Form, Input} from 'antd';
 import {LockOutlined, UserOutlined} from '@ant-design/icons';
+import CenterBox from '../../../components/UI/CenterBox/CenterBox';
 
 const config = [
   {
@@ -47,20 +48,22 @@ const SignIn = (props) => {
   });
 
   return (
-    <Form>
-      {formItems}
-      <Form.Item>
-        <a href="">
-          Forgot password
-        </a>
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Sign in
-        </Button>
-        Or <a href="">register now!</a>
-      </Form.Item>
-    </Form>
+    <CenterBox title="Sign in to your account">
+      <Form>
+        {formItems}
+        <Form.Item>
+          <a href="">
+            Forgot password
+          </a>
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Sign in
+          </Button>
+          Or <a href="">register now!</a>
+        </Form.Item>
+      </Form>
+    </CenterBox>
   );
 };
 
