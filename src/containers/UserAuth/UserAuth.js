@@ -3,7 +3,8 @@ import {Route} from 'react-router-dom';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 import Confirm from './Confirm/Confirm';
-import RestPwd from './RestPwd/RestPwd';
+import ResetPwdStep1 from './ResetPwd/ResetPwdStep1';
+import ResetPwdStep2 from './ResetPwd/ResetPwdStep2';
 
 const UserAuth = (props) => {
 
@@ -11,8 +12,9 @@ const UserAuth = (props) => {
     <div>
       <Route path="/auth/sign-in" exact component={SignIn}/>
       <Route path="/auth/sign-up" exact component={SignUp}/>
-      <Route path="/auth/confirm/:uid" exact component={Confirm}/>
-      <Route path="/auth/rest-pwd" exact component={RestPwd}/>
+      <Route path="/auth/confirm/:username" exact component={Confirm}/>
+      <Route path="/auth/reset-pwd" exact component={ResetPwdStep1}/>
+      <Route path="/auth/reset-pwd/:username" exact component={ResetPwdStep2}/>
     </div>
   );
 };

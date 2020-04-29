@@ -7,7 +7,7 @@ import AuthService from '../../../services/AuthService';
 const Confirm = (props) => {
 
   const [form] = Form.useForm();
-  const username = props.match.params.uid;
+  const username = props.match.params.username;
   const [loading, setLoading] = useState(false);
 
   const confirmHandler = async (values) => {

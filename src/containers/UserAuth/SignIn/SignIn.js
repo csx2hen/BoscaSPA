@@ -53,7 +53,7 @@ const SignIn = (props) => {
       <Form form={form} name="sign-in" onFinish={signInHandler}>
         {formItems}
         <Form.Item>
-          <Link to="/auth/rest-pwd">Forgot password</Link>
+          <Link to="/auth/reset-pwd">Forgot password</Link>
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" block loading={loading}>

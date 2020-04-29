@@ -35,7 +35,7 @@ class AuthService {
       return {
         success: true,
         message: '',
-        username: data.userSub,
+        username: username,
       };
     } catch (err) {
       logger.error(err);
@@ -69,6 +69,41 @@ class AuthService {
         success: true,
         message: '',
         user: data,
+      };
+    } catch (err) {
+      logger.error(err);
+      return {
+        success: false,
+        message: err.message,
+      };
+    }
+  };
+
+  static resetPwd = async (username) => {
+    try {
+      await Auth.forgotPassword(username);
+      return {
+        success: true,
+        message: '',
+        username: username,
+      };
+    } catch (err) {
+      logger.error(err);
+      return {
+        success: false,
+        message: err.message,
+      };
+    }
+  };
+
+  static setNewPwd = async (username, code, newPwd) => {
+    try {
+      const data = await Auth.forgotPasswordSubmit(username, code, newPwd);
+      logger.info(data);
+      return {
+        success: true,
+        message: '',
+        username: username,
       };
     } catch (err) {
       logger.error(err);
