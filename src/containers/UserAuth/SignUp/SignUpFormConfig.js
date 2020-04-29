@@ -37,7 +37,7 @@ const formContentConfig = [
         validator: (rule, value) => {
           const format = /[a-z]/;
           if (value && !format.test(value)) {
-            return Promise.reject('No lowercase letters');
+            return Promise.reject('• No lowercase letters');
           }
           return Promise.resolve();
         },
@@ -46,7 +46,7 @@ const formContentConfig = [
         validator: (rule, value) => {
           const format = /[A-Z]/;
           if (value && !format.test(value)) {
-            return Promise.reject('No uppercase letters');
+            return Promise.reject('• No uppercase letters');
           }
           return Promise.resolve();
         },
@@ -55,7 +55,7 @@ const formContentConfig = [
         validator: (rule, value) => {
           const format = /[0-9]/;
           if (value && !format.test(value)) {
-            return Promise.reject('No numbers');
+            return Promise.reject('• No numbers');
           }
           return Promise.resolve();
         },
@@ -64,7 +64,7 @@ const formContentConfig = [
         validator: (rule, value) => {
           const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
           if (value && !format.test(value)) {
-            return Promise.reject('No special characters');
+            return Promise.reject('• No special characters');
           }
           return Promise.resolve();
         },
@@ -72,7 +72,7 @@ const formContentConfig = [
       {
         validator: (rule, value) => {
           if (value && value.length < 8) {
-            return Promise.reject('Less than 8 characters');
+            return Promise.reject('• Less than 8 characters');
           }
           return Promise.resolve();
         },
