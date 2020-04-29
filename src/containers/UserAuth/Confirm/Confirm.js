@@ -49,7 +49,7 @@ const Confirm = (props) => {
   };
 
   return (
-    <CenterBox title='Use code to confirm your E-mail'>
+    <CenterBox title='Use code to confirm your E-mail' width={8}>
       <Form form={form} name="confirm" onFinish={confirmHandler}>
         <Form.Item {...formItemLayout}
                    name="code"
