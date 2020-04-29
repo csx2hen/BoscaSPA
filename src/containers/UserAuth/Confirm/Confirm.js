@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import CenterBox from '../../../components/UI/CenterBox/CenterBox';
 import {Button, Form, Input, notification} from 'antd';
-import {formItemLayout, tailFormItemLayout} from './ConfirmFormConfig';
+import {formItemLayout, tailFormItemLayout} from '../FormLayoutConfig';
 import AuthService from '../../../services/AuthService';
 
 const Confirm = (props) => {

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {formContentConfig, formItemLayout, tailFormItemLayout} from './SignUpFormConfig';
+import formContentConfig from './SignUpFormConfig';
+import {formItemLayout, tailFormItemLayout} from '../FormLayoutConfig';
 import {Button, Form, Input, notification} from 'antd';
 import CenterBox from '../../../components/UI/CenterBox/CenterBox';
 import AuthService from '../../../services/AuthService';
