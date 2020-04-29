@@ -5,7 +5,7 @@ const CenterBox = (props) => {
 
   return (
     <Row justify="center" align="middle" style={{height: '100vh'}}>
-      <Col span={props.height ? props.height : 6}>
+      <Col span={props.width ? props.width : 6}>
         <Card title={props.title}>
           {props.children}
         </Card>
