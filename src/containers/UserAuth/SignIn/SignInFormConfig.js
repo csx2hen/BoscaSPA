@@ -3,8 +3,6 @@ import {LockOutlined, UserOutlined} from '@ant-design/icons';
 const config = [
   {
     name: 'email',
-    type: '',
-    label: 'E-mail',
     placeholder: 'E-mail',
     icon: UserOutlined,
     rules: [
@@ -21,7 +19,6 @@ const config = [
   {
     name: 'password',
     type: 'password',
-    label: 'Password',
     placeholder: 'Password',
     icon: LockOutlined,
     rules: [

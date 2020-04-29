@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 const SignIn = (props) => {
 
   const formItems = config.map(e => {
-    const prefix = React.createElement(e.icon, {className: 'site-form-item-icon'}, null);
+    const prefix = React.createElement(e.icon, {}, null);
     return (
       <Form.Item key={e.name} name={e.name} rules={e.rules}>
         <Input prefix={prefix} type={e.type} placeholder={e.placeholder}/>
