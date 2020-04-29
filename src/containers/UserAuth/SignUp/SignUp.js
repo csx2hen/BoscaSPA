@@ -1,9 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {formContentConfig, formItemLayout, tailFormItemLayout} from './SignUpFormConfig';
-import {Button, Form, Input} from 'antd';
+import {Button, Form, Input, notification} from 'antd';
 import CenterBox from '../../../components/UI/CenterBox/CenterBox';
+import AuthService from '../../../services/AuthService';
 
 const SignUp = (props) => {
+
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+
+  const signUpHandler = async (values) => {
+    setLoading(true);
+    const result = await AuthService.signUp(values.email, values.password, values.name);
+    setLoading(false);
+    if (result.success) {
+      props.history.push(`/auth/confirm/${result.username}`);
+    } else {
+      notification['error']({
+        message: 'Could not create this account',
+        description: result.message,
+        duration: 5,
+      });
+    }
+  };
 
   const formItems = formContentConfig.map(e => {
     return (
@@ -21,10 +40,10 @@ const SignUp = (props) => {
 
   return (
     <CenterBox title="Create a new account" width={8}>
-      <Form>
+      <Form form={form} name="sign-up" onFinish={signUpHandler}>
         {formItems}
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={loading}>
             Create account
           </Button>
         </Form.Item>

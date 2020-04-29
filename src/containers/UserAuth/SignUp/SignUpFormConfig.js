@@ -31,7 +31,7 @@ const formContentConfig = [
     rules: [
       {
         required: true,
-        message: 'Please input your password',
+        message: 'Please input your password.',
       },
       {
         validator: (rule, value) => {
@@ -88,14 +88,14 @@ const formContentConfig = [
     rules: [
       {
         required: true,
-        message: 'Please confirm your password',
+        message: 'Please confirm your password.',
       },
       ({getFieldValue}) => ({
         validator(rule, value) {
           if (!value || getFieldValue('password') === value) {
             return Promise.resolve();
           }
-          return Promise.reject('The two passwords do not match');
+          return Promise.reject('The two passwords do not match.');
         },
       }),
     ],
