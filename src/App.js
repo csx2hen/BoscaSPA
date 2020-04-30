@@ -1,19 +1,23 @@
 import React from 'react';
 import Amplify from 'aws-amplify';
 import awsConfig from './config/awsConfig';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Home from './containers/Home/Home';
 import UserAuth from './containers/UserAuth/UserAuth';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+
 
 Amplify.configure(awsConfig);
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
-        <Route path="/" exact component={Home}/>
+      <Switch>
+        <Route path="/home" component={Home}/>
         <Route path="/auth" component={UserAuth}/>
-      </div>
+        <Route path="/404" component={PageNotFound}/>
+        <Redirect from="/" to="/404"/>
+      </Switch>
     </BrowserRouter>
 
   );
