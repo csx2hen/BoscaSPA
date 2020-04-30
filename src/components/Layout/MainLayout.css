@@ -1,0 +1,17 @@
+#main-layout .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+}
+
+#main-layout .header {
+    background: #fff;
+    padding: 0;
+}
+
+#main-layout .content {
+    background: #fff;
+    margin: 24px 16px;
+    padding: 24px;
+    min-height: 360px;
+}
