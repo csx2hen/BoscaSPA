@@ -40,7 +40,7 @@ const ResetPwdStep1 = (props) => {
                        message: 'The input is not a valid e-mail address.',
                      },
                    ]}>
-          <Input/>
+          <Input autoComplete="username"/>
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit" loading={loading}>

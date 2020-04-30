@@ -43,7 +43,7 @@ const SignIn = (props) => {
     const prefix = React.createElement(e.icon, {}, null);
     return (
       <Form.Item key={e.name} name={e.name} rules={e.rules}>
-        <Input prefix={prefix} type={e.type} placeholder={e.placeholder}/>
+        <Input prefix={prefix} type={e.type} placeholder={e.placeholder} autoComplete={e.autoComplete}/>
       </Form.Item>
     );
   });

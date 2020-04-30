@@ -2,6 +2,7 @@ const formContentConfig = [
   {
     name: 'email',
     label: 'E-mail',
+    autoComplete: 'username',
     rules: [
       {
         required: true,
@@ -16,6 +17,7 @@ const formContentConfig = [
   {
     name: 'name',
     label: 'Name',
+    autoComplete: 'off',
     rules: [
       {
         required: true,
@@ -28,6 +30,7 @@ const formContentConfig = [
     type: 'password',
     label: 'Password',
     hasFeedback: true,
+    autoComplete: 'new-password',
     rules: [
       {
         required: true,
@@ -84,6 +87,7 @@ const formContentConfig = [
     type: 'password',
     label: 'Confirm Password',
     hasFeedback: true,
+    autoComplete: 'new-password',
     dependencies: ['password'],
     rules: [
       {

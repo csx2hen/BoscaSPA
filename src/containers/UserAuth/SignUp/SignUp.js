@@ -34,7 +34,7 @@ const SignUp = (props) => {
                  label={e.label}
                  hasFeedback={e.hasFeedback}
                  dependencies={e.dependencies}>
-        <Input type={e.type}/>
+        <Input type={e.type} autoComplete={e.autoComplete}/>
       </Form.Item>
     );
   });

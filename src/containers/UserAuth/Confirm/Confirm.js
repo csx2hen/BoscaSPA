@@ -55,7 +55,7 @@ const Confirm = (props) => {
                    name="code"
                    label="Code"
                    rules={[{required: true, message: 'Please input your emailed code.'}]}>
-          <Input/>
+          <Input autoComplete="off"/>
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit" loading={loading}>

@@ -5,6 +5,7 @@ const config = [
     name: 'email',
     placeholder: 'E-mail',
     icon: UserOutlined,
+    autoComplete: 'username',
     rules: [
       {
         required: true,
@@ -21,6 +22,7 @@ const config = [
     type: 'password',
     placeholder: 'Password',
     icon: LockOutlined,
+    autoComplete: 'current-password',
     rules: [
       {
         required: true,

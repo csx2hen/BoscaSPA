@@ -40,7 +40,7 @@ const ResetPwdStep2 = (props) => {
                  label={e.label}
                  hasFeedback={e.hasFeedback}
                  dependencies={e.dependencies}>
-        <Input type={e.type}/>
+        <Input type={e.type} autoComplete={e.autoComplete}/>
       </Form.Item>
     );
   });
@@ -48,6 +48,11 @@ const ResetPwdStep2 = (props) => {
   return (
     <CenterBox title="Set new password">
       <Form form={form} name="rest-pwd-step-2" onFinish={setNewPwdHandler}>
+        {/*Just for autoComplete hint.*/}
+        <Form.Item {...formItemLayout} name="username" label="Username" style={{display: 'none'}}>
+          <Input disabled value={username} autoComplete="username"/>
+        </Form.Item>
+
         {formItems}
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit" loading={loading}>
