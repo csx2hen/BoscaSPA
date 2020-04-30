@@ -1,11 +1,17 @@
 import React from 'react';
 import {Card, Col, Row} from 'antd';
+import {compactLayout, normalLayout} from './CenterBoxLayoutConfig';
 
 const CenterBox = (props) => {
 
+  let layout = normalLayout;
+  if (props.compact) {
+    layout = compactLayout;
+  }
+
   return (
     <Row justify="center" align="middle" style={{height: '100vh'}}>
-      <Col span={props.width ? props.width : 6}>
+      <Col {...layout}>
         <Card title={props.title}>
           {props.children}
         </Card>

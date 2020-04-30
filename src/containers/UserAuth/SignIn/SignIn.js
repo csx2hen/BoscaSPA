@@ -49,7 +49,7 @@ const SignIn = (props) => {
   });
 
   return (
-    <CenterBox title="Sign in to your account">
+    <CenterBox title="Sign in to your account" compact>
       <Form form={form} name="sign-in" onFinish={signInHandler}>
         {formItems}
         <Form.Item>

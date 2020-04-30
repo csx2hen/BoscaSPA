@@ -25,7 +25,7 @@ const ResetPwdStep1 = (props) => {
   };
 
   return (
-    <CenterBox title="Reset your password" width={8}>
+    <CenterBox title="Reset your password">
       <Form form={form} name="rest-pwd-step-1" onFinish={resetPwdHandler}>
         <Form.Item {...formItemLayout}
                    name="email"

@@ -40,7 +40,7 @@ const SignUp = (props) => {
   });
 
   return (
-    <CenterBox title="Create a new account" width={8}>
+    <CenterBox title="Create a new account">
       <Form form={form} name="sign-up" onFinish={signUpHandler}>
         {formItems}
         <Form.Item {...tailFormItemLayout}>
