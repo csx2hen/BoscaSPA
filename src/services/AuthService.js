@@ -97,7 +97,7 @@ class AuthService {
 
   static setNewPwd = async (username, code, newPwd) => {
     try {
-      const data = await Auth.forgotPasswordSubmit(username, code, newPwd);
+      await Auth.forgotPasswordSubmit(username, code, newPwd);
       return {
         success: true,
         message: '',
