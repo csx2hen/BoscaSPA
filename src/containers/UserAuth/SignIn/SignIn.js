@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Form, Input, notification} from 'antd';
 import CenterBox from '../../../components/UI/CenterBox/CenterBox';
 import config from './SignInFormConfig';
@@ -10,6 +10,17 @@ const SignIn = (props) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
+  // check Auth
+  useEffect(() => {
+    const checkAuth = async () => {
+      const result = await AuthService.getCurrentUser(true);
+      if (result.success) {
+        props.history.push('/main');
+      }
+    };
+    checkAuth();
+  }, []);
+
   const signInHandler = async (values) => {
     setLoading(true);
     const result = await AuthService.signIn(values.email, values.password);
@@ -20,7 +31,6 @@ const SignIn = (props) => {
         description: 'You have successfully logged in.',
         duration: 3,
       });
-      // todo storage user info into local storage
       props.history.push(`/main`);
     } else if (result.error.code === 'UserNotConfirmedException') {
       notification['warning']({

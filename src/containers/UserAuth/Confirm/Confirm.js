@@ -16,12 +16,11 @@ const Confirm = (props) => {
     setLoading(false);
     if (result.success) {
       notification['success']({
-        message: 'Welcome',
-        description: 'You have successfully logged in.',
+        message: 'Perfect',
+        description: 'You have confirmed your email. Now you can login.',
         duration: 5,
       });
-      // todo storage user info into local storage
-      props.history.push(`/`);
+      props.history.push(`/auth/sign-in`);
     } else {
       notification['error']({
         message: 'Could not log in',
