@@ -11,9 +11,7 @@ const MainLayout = (props) => {
     <Layout id="main-layout" style={{height: '100vh'}}>
       {/*left part*/}
       <Sider breakpoint="lg" collapsedWidth="0">
-        <div className="banner">
-          {props.logo}
-        </div>
+        {props.logo}
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1" icon={<FileOutlined/>}>
             File
