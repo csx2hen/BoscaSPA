@@ -1,0 +1,9 @@
+#logo-banner .logo img {
+    height: 48px;
+}
+
+#logo-banner .logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
