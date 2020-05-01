@@ -4,6 +4,7 @@ import AuthService from '../../services/AuthService';
 import Logo from '../../components/Logo/Logo';
 import Header from '../../components/Header/Header';
 import {notification} from 'antd';
+import SidebarMenu from '../../components/SidebarMenu/SidebarMenu';
 
 
 const Main = (props) => {
@@ -31,7 +32,8 @@ const Main = (props) => {
 
   return (
     <MainLayout header={<Header history={props.history} name={name}/>}
-                logo={<Logo/>}/>
+                logo={<Logo/>}
+                menu={<SidebarMenu/>}/>
   );
 };
 

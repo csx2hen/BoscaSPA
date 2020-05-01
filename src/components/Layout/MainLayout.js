@@ -1,6 +1,5 @@
 import React from 'react';
-import {Layout, Menu} from 'antd';
-import {FileOutlined} from '@ant-design/icons';
+import {Layout} from 'antd';
 import './MainLayout.css';
 
 const {Header, Sider, Content} = Layout;
@@ -12,11 +11,7 @@ const MainLayout = (props) => {
       {/*left part*/}
       <Sider breakpoint="lg" collapsedWidth="0">
         {props.logo}
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1" icon={<FileOutlined/>}>
-            File
-          </Menu.Item>
-        </Menu>
+        {props.menu}
       </Sider>
 
       {/*right part*/}
