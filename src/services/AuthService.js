@@ -31,7 +31,6 @@ class AuthService {
           'preferred_username': name,
         },
       });
-      logger.info(data);
       return {
         success: true,
         message: '',
@@ -99,11 +98,43 @@ class AuthService {
   static setNewPwd = async (username, code, newPwd) => {
     try {
       const data = await Auth.forgotPasswordSubmit(username, code, newPwd);
-      logger.info(data);
       return {
         success: true,
         message: '',
         username: username,
+      };
+    } catch (err) {
+      logger.error(err);
+      return {
+        success: false,
+        message: err.message,
+      };
+    }
+  };
+
+  static getCurrentUser = async (bypassCache = false) => {
+    try {
+      const data = await Auth.currentAuthenticatedUser({bypassCache: bypassCache});
+      return {
+        success: true,
+        message: '',
+        user: data,
+      };
+    } catch (err) {
+      logger.error(err);
+      return {
+        success: false,
+        message: err.message,
+      };
+    }
+  };
+
+  static signOut = async () => {
+    try {
+      await Auth.signOut();
+      return {
+        success: true,
+        message: '',
       };
     } catch (err) {
       logger.error(err);

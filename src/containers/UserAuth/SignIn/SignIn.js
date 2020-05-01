@@ -18,10 +18,10 @@ const SignIn = (props) => {
       notification['success']({
         message: 'Welcome',
         description: 'You have successfully logged in.',
-        duration: 5,
+        duration: 3,
       });
       // todo storage user info into local storage
-      props.history.push(`/`);
+      props.history.push(`/main`);
     } else if (result.error.code === 'UserNotConfirmedException') {
       notification['warning']({
         message: 'Could not log in',
