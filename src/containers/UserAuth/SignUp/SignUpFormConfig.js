@@ -65,7 +65,7 @@ const formContentConfig = [
       },
       {
         validator: (rule, value) => {
-          const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+          const format = /[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
           if (value && !format.test(value)) {
             return Promise.reject('• No special characters');
           }
