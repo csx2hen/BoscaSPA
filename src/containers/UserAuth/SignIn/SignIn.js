@@ -15,6 +15,11 @@ const SignIn = (props) => {
     const checkAuth = async () => {
       const result = await AuthService.getCurrentUser(true);
       if (result.success) {
+        notification['success']({
+          message: 'Welcome back',
+          description: 'You have already logged in.',
+          duration: 3,
+        });
         props.history.push('/main');
       }
     };

@@ -3,6 +3,7 @@ import MainLayout from '../../components/Layout/MainLayout';
 import AuthService from '../../services/AuthService';
 import Logo from '../../components/Logo/Logo';
 import Header from '../../components/Header/Header';
+import {notification} from 'antd';
 
 
 const Main = (props) => {
@@ -17,6 +18,11 @@ const Main = (props) => {
       if (result.success) {
         setUser(result.user);
       } else {
+        notification['warning']({
+          message: 'Not logged in',
+          description: 'You have not logged in yet. Please log in.',
+          duration: 5,
+        });
         props.history.push('/auth/sign-in');
       }
     };
