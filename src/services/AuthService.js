@@ -24,7 +24,7 @@ class AuthService {
 
   static signUp = async (username, password, name) => {
     try {
-      const data = await Auth.signUp({
+      await Auth.signUp({
         username,
         password,
         attributes: {
