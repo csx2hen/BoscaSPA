@@ -20,7 +20,7 @@ const SignIn = (props) => {
           description: 'You have already logged in.',
           duration: 3,
         });
-        props.history.push('/main');
+        props.history.push('/main/files');
       }
     };
     checkAuth();
@@ -36,7 +36,7 @@ const SignIn = (props) => {
         description: 'You have successfully logged in.',
         duration: 3,
       });
-      props.history.push(`/main`);
+      props.history.push(`/main/files`);
     } else if (result.error.code === 'UserNotConfirmedException') {
       notification['warning']({
         message: 'Could not log in',

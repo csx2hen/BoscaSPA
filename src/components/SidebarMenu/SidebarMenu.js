@@ -6,8 +6,10 @@ const SidebarMenu = (props) => {
 
   return (
     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-      <Menu.Item key="1" icon={<FileOutlined/>}>
-        File
+      <Menu.Item key="1" icon={<FileOutlined/>} onClick={() => {
+        props.history.push('/main/files');
+      }}>
+        Files
       </Menu.Item>
     </Menu>
   );

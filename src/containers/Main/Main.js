@@ -5,6 +5,9 @@ import Logo from '../../components/Logo/Logo';
 import Header from '../../components/Header/Header';
 import {notification} from 'antd';
 import SidebarMenu from '../../components/SidebarMenu/SidebarMenu';
+import {Route, Switch} from 'react-router-dom';
+import Files from './Files/Files';
+import PageNotFound from '../../components/PageNotFound/PageNotFound';
 
 
 const Main = (props) => {
@@ -30,10 +33,23 @@ const Main = (props) => {
     checkAuth();
   }, []);
 
+  const content = (
+    <Switch>
+      <Route path='/main/files' component={Files}/>
+      <Route path="/main" component={PageNotFound}/>
+    </Switch>
+  );
+
   return (
-    <MainLayout header={<Header history={props.history} name={name}/>}
-                logo={<Logo/>}
-                menu={<SidebarMenu/>}/>
+    <div>
+
+      <MainLayout header={<Header history={props.history} name={name}/>}
+                  logo={<Logo/>}
+                  menu={<SidebarMenu history={props.history}/>}
+                  content={content}
+      />
+    </div>
+
   );
 };
 
