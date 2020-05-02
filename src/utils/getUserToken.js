@@ -1,10 +1,10 @@
 import AuthService from '../services/AuthService';
 import {notification} from 'antd';
 
-const checkAuth = async (history, bypassCache) => {
-  const result = await AuthService.getCurrentUser(bypassCache);
+const getUserToken = async (history) => {
+  const result = await AuthService.getCurrentSession();
   if (result.success) {
-    return result.user;
+    return result.session.getIdToken().getJwtToken();
   } else {
     notification['warning']({
       message: 'Not logged in',
@@ -15,4 +15,4 @@ const checkAuth = async (history, bypassCache) => {
   }
 };
 
-export default checkAuth;
+export default getUserToken;

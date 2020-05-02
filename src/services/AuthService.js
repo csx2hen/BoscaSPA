@@ -144,6 +144,23 @@ class AuthService {
       };
     }
   };
+
+  static getCurrentSession = async () => {
+    try {
+      const data = await Auth.currentSession();
+      return {
+        success: true,
+        message: '',
+        session: data,
+      };
+    } catch (err) {
+      logger.error(err);
+      return {
+        success: false,
+        message: err.message,
+      };
+    }
+  };
 }
 
 export default AuthService;

@@ -13,7 +13,7 @@ const SignIn = (props) => {
   // check Auth
   useEffect(() => {
     const checkAuth = async () => {
-      const result = await AuthService.getCurrentUser(true);
+      const result = await AuthService.getCurrentSession();
       if (result.success) {
         notification['success']({
           message: 'Welcome back',
