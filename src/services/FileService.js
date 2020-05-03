@@ -34,7 +34,7 @@ class FileService {
       return {
         success: true,
         message: '',
-        data: data,
+        fileList: data,
       };
     } catch (err) {
       logger.error(err);

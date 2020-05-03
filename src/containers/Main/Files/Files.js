@@ -1,6 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import FileService from '../../../services/FileService';
 import UploadArea from '../../../components/UploadArea/UploadArea';
+import FileGridList from '../../../components/FileList/GridList/FileGridList';
+import {notification, Space, Spin} from 'antd';
 
 const Files = (props) => {
 
@@ -13,14 +15,36 @@ const Files = (props) => {
   //   checkAuth();
   // }, []);
 
+  const [fileList, setFileList] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const updateFileList = async () => {
+    setLoading(true);
+    const result = await FileService.list('');
+    setLoading(false);
+    if (result.success) {
+      setFileList(result.fileList);
+    } else {
+      notification['error']({
+        message: 'Could not load file list',
+        description: result.message,
+        duration: 5,
+      });
+    }
+  };
+
   useEffect(() => {
-    FileService.list('');
+    updateFileList();
   }, []);
 
+
   return (
-    <div>
+    <Space direction="vertical" size="large" style={{width: '100%'}}>
       <UploadArea/>
-    </div>
+      <Spin spinning={loading} tip="Loading..." size="large">
+        <FileGridList fileList={fileList}/>
+      </Spin>
+    </Space>
   );
 };
 

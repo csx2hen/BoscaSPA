@@ -5,7 +5,9 @@
 
 #main-layout .content {
     background: #fff;
-    margin: 24px 16px;
+    margin: 24px 16px 0;
     padding: 24px;
     min-height: 360px;
+    display: block;
+    overflow: auto;
 }
