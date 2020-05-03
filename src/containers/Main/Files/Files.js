@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import FileService from '../../../services/FileService';
 import UploadArea from '../../../components/UploadArea/UploadArea';
 import FileGridList from '../../../components/FileList/GridList/FileGridList';
-import {notification, Space, Spin} from 'antd';
+import {notification, Space} from 'antd';
+import downloadURI from '../../../utils/downloadURI';
 
 const Files = (props) => {
 
@@ -33,17 +34,47 @@ const Files = (props) => {
     }
   };
 
+  const downloadHandler = async (key) => {
+    const result = await FileService.download(key);
+    if (result.success) {
+      const url = result.url;
+      downloadURI(url, key);
+    } else {
+      notification['error']({
+        message: `Could not download the file, "${key}"`,
+        description: result.message,
+        duration: 5,
+      });
+    }
+  };
+
+  const deleteHandler = async (key) => {
+    const result = await FileService.delete(key);
+    if (result.success) {
+      updateFileList();
+    } else {
+      notification['error']({
+        message: `Could not delete the file, "${key}"`,
+        description: result.message,
+        duration: 5,
+      });
+    }
+  };
+
   useEffect(() => {
     updateFileList();
   }, []);
 
-
   return (
     <Space direction="vertical" size="large" style={{width: '100%'}}>
       <UploadArea/>
-      <Spin spinning={loading} tip="Loading..." size="large">
-        <FileGridList fileList={fileList}/>
-      </Spin>
+      <FileGridList fileList={fileList}
+                    download={downloadHandler}
+                    delete={deleteHandler}
+                    loading={loading}
+
+      />
+
     </Space>
   );
 };

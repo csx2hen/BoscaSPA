@@ -11,8 +11,8 @@ const FileGridList = (props) => {
     gutter: 16,
     xs: 1,
     sm: 2,
-    md: 4,
-    lg: 4,
+    md: 3,
+    lg: 3,
     xl: 4,
     xxl: 6,
   };
@@ -23,9 +23,9 @@ const FileGridList = (props) => {
         <Card hoverable
               size="small"
               actions={[
-                <DownloadOutlined key="download"/>,
+                <DownloadOutlined key="download" onClick={() => props.download(item.key)}/>,
                 <SettingOutlined key="setting"/>,
-                <DeleteOutlined key="delete"/>,
+                <DeleteOutlined key="delete" onClick={() => props.delete(item.key)}/>,
               ]}
         >
           <Meta avatar={<FileTypeIcon fileName={item.key}/>}
@@ -42,6 +42,11 @@ const FileGridList = (props) => {
             dataSource={props.fileList}
             renderItem={renderItem}
             pagination={{pageSize: 16}}
+            loading={{
+              spinning: props.loading,
+              tip: 'Loading...',
+              size: 'large',
+            }}
       />
     </div>
   );

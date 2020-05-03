@@ -30,7 +30,6 @@ class FileService {
   static list = async (path) => {
     try {
       const data = await Storage.vault.list(path);
-      logger.info(data);
       return {
         success: true,
         message: '',
@@ -42,6 +41,39 @@ class FileService {
         success: false,
         message: err.message,
         error: err,
+      };
+    }
+  };
+
+  static download = async (key) => {
+    try {
+      const data = await Storage.vault.get(key);
+      return {
+        success: true,
+        message: '',
+        url: data,
+      };
+    } catch (err) {
+      logger.error(err);
+      return {
+        success: false,
+        message: err.message,
+      };
+    }
+  };
+
+  static delete = async (key) => {
+    try {
+      await Storage.vault.remove(key);
+      return {
+        success: true,
+        message: '',
+      };
+    } catch (err) {
+      logger.error(err);
+      return {
+        success: false,
+        message: err.message,
       };
     }
   };
