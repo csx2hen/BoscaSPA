@@ -9,7 +9,7 @@ class FileService {
     try {
       const data = await Storage.vault.put(filename, file, {
         progressCallback(progress) {
-          onProgress({percent: Math.round(progress.loaded / progress.total * 100).toFixed(2)});
+          onProgress(filename, Math.round(progress.loaded / progress.total * 100).toFixed(2));
         },
       });
       return {

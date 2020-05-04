@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, List, Modal, Tooltip} from 'antd';
+import {Card, Col, List, Modal, Progress, Row, Tooltip} from 'antd';
 import {DeleteOutlined, DownloadOutlined, ExclamationCircleOutlined, SettingOutlined} from '@ant-design/icons';
 import FileTypeIcon from '../../FileTypeIcon/FileTypeIcon';
 
@@ -32,7 +32,34 @@ const FileGridList = (props) => {
     });
   };
 
+
   const renderItem = (item) => {
+    if (item.loading) {
+      return (
+        <List.Item>
+          <Card size="small"
+                actions={[(
+                  <Row justify="center">
+                    <Col span={22}>
+                      <Progress percent={props.uploadProgress.get(item.key)} showInfo={false}/>
+                    </Col>
+                  </Row>
+                )]}
+          >
+            <Meta avatar={<FileTypeIcon fileName={item.key}/>}
+                  title={
+                    (
+                      <Tooltip placement="topLeft" title={item.key}>
+                        <span>{item.key}</span>
+                      </Tooltip>
+                    )
+                  }
+            />
+          </Card>
+        </List.Item>
+      );
+    }
+
     return (
       <List.Item>
         <Card hoverable

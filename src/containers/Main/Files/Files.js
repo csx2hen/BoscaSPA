@@ -18,13 +18,19 @@ const Files = (props) => {
 
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(new Map());
 
   const updateFileList = async () => {
     setLoading(true);
     const result = await FileService.list('');
     setLoading(false);
     if (result.success) {
-      setFileList(result.fileList);
+      const list = result.fileList.sort((a, b) => {
+        if (a.lastModified > b.lastModified) return -1;
+        if (a.lastModified < b.lastModified) return 1;
+        return 0;
+      });
+      setFileList(list);
     } else {
       notification['error']({
         message: 'Could not load file list',
@@ -66,18 +72,36 @@ const Files = (props) => {
     }
   };
 
+  const putUploadingPlaceholder = (key) => {
+    const newFileList = [...fileList];
+    newFileList.unshift({
+      loading: true,
+      key: key,
+    });
+    setFileList(newFileList);
+  };
+
+  const updateUploadProgress = (key, percent) => {
+    const newProgress = new Map(uploadProgress);
+    newProgress.set(key, percent);
+    setUploadProgress(newProgress);
+  };
+
   useEffect(() => {
     updateFileList();
   }, []);
 
   return (
     <Space direction="vertical" size="large" style={{width: '100%'}}>
-      <UploadArea/>
+      <UploadArea onUploadStart={putUploadingPlaceholder}
+                  onUploadFinish={updateFileList}
+                  onProgress={updateUploadProgress}
+      />
       <FileGridList fileList={fileList}
                     download={downloadHandler}
                     delete={deleteHandler}
                     loading={loading}
-
+                    uploadProgress={uploadProgress}
       />
 
     </Space>

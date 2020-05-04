@@ -40,8 +40,10 @@ const UploadArea = (props) => {
   //   };
   // };
 
-  const customRequest = async ({file, onProgress}) => {
-    const result = await FileService.upload(file.name, file, onProgress);
+  const customRequest = async ({file}) => {
+    props.onUploadStart(file.name);
+    const result = await FileService.upload(file.name, file, props.onProgress);
+    props.onUploadFinish();
     if (result.success) {
       // onSuccess(result.response);
       notification['success']({
