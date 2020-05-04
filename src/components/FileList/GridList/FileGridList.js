@@ -1,9 +1,10 @@
 import React from 'react';
-import {Card, List} from 'antd';
-import {DeleteOutlined, DownloadOutlined, SettingOutlined} from '@ant-design/icons';
+import {Card, List, Modal, Tooltip} from 'antd';
+import {DeleteOutlined, DownloadOutlined, ExclamationCircleOutlined, SettingOutlined} from '@ant-design/icons';
 import FileTypeIcon from '../../FileTypeIcon/FileTypeIcon';
 
 const {Meta} = Card;
+const {confirm} = Modal;
 
 const FileGridList = (props) => {
 
@@ -17,6 +18,20 @@ const FileGridList = (props) => {
     xxl: 6,
   };
 
+  const showDeleteConfirm = (key) => {
+    confirm({
+      title: 'Are you sure to delete this file?',
+      icon: <ExclamationCircleOutlined/>,
+      content: `The file, ${key}, will be removed permanently.`,
+      okText: 'Delete',
+      okType: 'danger',
+      cancelText: 'Cancel',
+      onOk() {
+        props.delete(key);
+      },
+    });
+  };
+
   const renderItem = (item) => {
     return (
       <List.Item>
@@ -25,11 +40,17 @@ const FileGridList = (props) => {
               actions={[
                 <DownloadOutlined key="download" onClick={() => props.download(item.key)}/>,
                 <SettingOutlined key="setting"/>,
-                <DeleteOutlined key="delete" onClick={() => props.delete(item.key)}/>,
+                <DeleteOutlined key="delete" onClick={() => showDeleteConfirm(item.key)}/>,
               ]}
         >
           <Meta avatar={<FileTypeIcon fileName={item.key}/>}
-                title={item.key}
+                title={
+                  (
+                    <Tooltip placement="topLeft" title={item.key}>
+                      <span>{item.key}</span>
+                    </Tooltip>
+                  )
+                }
                 description={item.lastModified.toLocaleString('en-US')}/>
         </Card>
       </List.Item>

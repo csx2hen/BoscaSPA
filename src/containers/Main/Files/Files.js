@@ -41,7 +41,7 @@ const Files = (props) => {
       downloadURI(url, key);
     } else {
       notification['error']({
-        message: `Could not download the file, "${key}"`,
+        message: `Could not download the file, ${key}`,
         description: result.message,
         duration: 5,
       });
@@ -52,9 +52,14 @@ const Files = (props) => {
     const result = await FileService.delete(key);
     if (result.success) {
       updateFileList();
+      notification['success']({
+        message: 'Removed',
+        description: `You have successfully deleted the file, ${key}.`,
+        duration: 3,
+      });
     } else {
       notification['error']({
-        message: `Could not delete the file, "${key}"`,
+        message: `Could not delete the file, ${key}`,
         description: result.message,
         duration: 5,
       });

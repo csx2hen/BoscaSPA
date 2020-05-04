@@ -46,7 +46,7 @@ const UploadArea = (props) => {
       // onSuccess(result.response);
       notification['success']({
         message: 'Uploaded',
-        description: `You have successfully uploaded the file, "${file.name}".`,
+        description: `You have successfully uploaded the file, ${file.name}.`,
         duration: 3,
       });
     } else {
